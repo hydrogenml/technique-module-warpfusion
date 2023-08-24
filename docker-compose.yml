@@ -1,7 +1,6 @@
 services:
   warpfusion:
-    build: .
-    image: hydrogenml/warpfusion-module
+    image: hydrogenml/warpfusion-module:latest
     ports:
       - "7999:7999"
     command: ""
