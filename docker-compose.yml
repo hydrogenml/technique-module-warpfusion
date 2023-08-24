@@ -2,7 +2,8 @@ services:
   warpfusion:
     build: .
     image: TODO
-    network_mode: host
+    ports:
+      - "7999:7999"
     command: ""
     volumes:
       # We cannot mount content directly, b/c that will wipe out
