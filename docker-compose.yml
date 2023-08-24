@@ -1,0 +1,31 @@
+services:
+  warpfusion:
+    build: .
+    image: TODO
+    network_mode: host
+    command: ""
+    volumes:
+      # We cannot mount content directly, b/c that will wipe out
+      # many repositories that are cloned into content in the Dockerfile
+      - ./content/images_out:/content/images_out
+      - ./content/models:/content/models
+      - ./content/controlnet_models_cache:/content/ControlNet/models
+      - ./content/init_images:/content/init_images
+      - ./content/model_cache:/root/.cache/
+      - ./content/controlnet_annotators_cache:/content/ControlNet/annotator/ckpts
+      - ./debug:/debug
+      - ./storage:/storage
+      - ./server:/server
+    shm_size: "2gb"
+    environment:
+      # for warpfusion
+      - LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/torch/lib
+      - IS_DOCKER=1
+      - PYTHONUNBUFFERED=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
