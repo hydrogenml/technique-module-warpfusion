@@ -13,9 +13,7 @@ services:
       - ./content/init_images:/content/init_images
       - ./content/model_cache:/root/.cache/
       - ./content/controlnet_annotators_cache:/content/ControlNet/annotator/ckpts
-      - ./debug:/debug
       - ./storage:/storage
-      - ./server:/server
     shm_size: "2gb"
     environment:
       # for warpfusion
