@@ -1,7 +1,7 @@
 services:
   warpfusion:
     build: .
-    image: TODO
+    image: hydrogenml/warpfusion-module
     ports:
       - "7999:7999"
     command: ""
